@@ -1,0 +1,126 @@
+
+
+
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
+
+#include <string>
+#include <iostream>
+
+# ifndef LineSizeAn
+#  define LineSizeAn 66
+# endif
+# ifndef STR1
+#  define STR1 "\033[32mDefault constructor called\033[0m\n"
+# endif
+# ifndef STR2
+#  define STR2 "\033[32mCopy constructor called\033[0m\n"
+# endif
+# ifndef STR3
+#  define STR3 "\033[32mDestructor called\033[0m\n"
+# endif
+# ifndef STR4
+#  define STR4 "\033[32mCopy assignment operator called\033[0m\n"
+# endif
+
+# ifndef STR6
+#  define STR6 "\033[32mConstructor with Name and Grade called\033[0m\n"
+# endif
+# ifndef STR7
+#  define STR7 "\033[32mConstructor with Grade called\033[0m\n"
+# endif
+# ifndef STR8
+#  define STR8 "\033[32mConstructor with Name called\033[0m\n"
+# endif
+
+# ifndef STR9
+#  define STR9 "\033[32mgetName function called\033[0m\n"
+# endif
+# ifndef STR10
+#  define STR10 "\033[32mgetGrade function called\033[0m\n"
+# endif
+# ifndef STR11
+#  define STR11 "\033[32mGradeIncrement function called\033[0m\n"
+# endif
+# ifndef STR12
+#  define STR12 "\033[32mGradeDecrement function called\033[0m\n"
+# endif
+
+// # ifndef STRD1
+// #  define STRD1 " Is DEAD 💀\033[0m and can't play anymore.\n"
+// # endif
+// # ifndef STRD2
+// #  define STRD2 " just Died 💀\033[0m\n"
+// # endif
+
+
+
+// # ifndef STDr1
+// #  define STDr1 "\033[34m -> ⚙️ Player is repairing: "
+// # endif
+
+// # ifndef STDd1
+// #  define STDd1 "\033[35m -> 💔 Player is taking damage: "
+// # endif
+
+// #ifndef STDa1
+// #  define STDa1 "\033[36m ⚔️ Player is attacking: "
+// # endif
+
+#ifndef Strhigh
+# define Strhigh "\033[32m -> ⚔️ Grade is too high!\033[0m\n"
+#endif
+
+#ifndef Strlow
+# define Strlow "\033[32m -> ⚔️ Grade is too low!\033[0m\n"
+#endif
+
+#ifndef STDAnS
+# define STDAnS "\033[32m -> 🤷‍♂️🐾 , bureaucrat grade \033[0m\n"
+#endif
+
+
+
+
+class Bureaucrat {
+	public:
+
+		class GradeTooHighException: public std::exception {
+			public:
+				const char* what() const throw();
+		};
+		class GradeTooLowException: public std::exception {
+			public:
+				const char* what() const throw();
+		};
+		//virtual void makeSound() const;
+		// std::string getType(void) const;
+		// void setType(std::string type2);
+		int getGrade(void) const;
+		const std::string getName(void) const;
+		
+		Bureaucrat(void);
+		~Bureaucrat(void);
+		Bureaucrat(std::string Myname, int Mygrade);
+		Bureaucrat(std::string Myname);
+		Bureaucrat(int Mygrade);
+
+		Bureaucrat(const Bureaucrat &obj1);
+		Bureaucrat &operator=(const Bureaucrat &obj1);
+
+		
+		void GradeIncrement(void);
+		void GradeDecrement(void);
+		
+	private:
+		const std::string Myname;
+		int Mygrade;
+	
+	protected:
+		// std::string type;
+};
+
+std::ostream &operator<<(std::ostream &out1, Bureaucrat const &obj1);
+
+#endif
+
