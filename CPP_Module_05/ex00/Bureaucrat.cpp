@@ -123,13 +123,13 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj1) {
 // }
 
 const std::string Bureaucrat::getName(void) const {
-    showCaseBureaucrat(0);
+    //showCaseBureaucrat(0);
     showCaseBureaucrat(9);
     return Myname;
 }
 
 int Bureaucrat::getGrade(void) const {
-    showCaseBureaucrat(0);
+    //showCaseBureaucrat(0);
     showCaseBureaucrat(10);
     return Mygrade;
 }
@@ -138,7 +138,7 @@ int Bureaucrat::getGrade(void) const {
 // 
 
 void Bureaucrat::GradeIncrement(void) {
-    showCaseBureaucrat(0);
+    //showCaseBureaucrat(0);
     showCaseBureaucrat(11);
     if (Mygrade - 1 < 1)
         throw Bureaucrat::GradeTooHighException();
@@ -147,7 +147,7 @@ void Bureaucrat::GradeIncrement(void) {
 }
 
 void Bureaucrat::GradeDecrement(void) {
-    showCaseBureaucrat(0);
+    //showCaseBureaucrat(0);
     showCaseBureaucrat(12);
     if (Mygrade + 1 > 150)
         throw Bureaucrat::GradeTooLowException();

@@ -1,6 +1,5 @@
 
 
-
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
@@ -34,16 +33,16 @@
 # endif
 
 # ifndef STR9
-#  define STR9 "\033[32mgetName function called\033[0m\n"
+#  define STR9 "\033[34m(getName function called) \033[0m"
 # endif
 # ifndef STR10
-#  define STR10 "\033[32mgetGrade function called\033[0m\n"
+#  define STR10 "\033[34m(getGrade function called) \033[0m"
 # endif
 # ifndef STR11
-#  define STR11 "\033[32mGradeIncrement function called\033[0m\n"
+#  define STR11 "\033[34m(GradeIncrement function called) \033[0m\n"
 # endif
 # ifndef STR12
-#  define STR12 "\033[32mGradeDecrement function called\033[0m\n"
+#  define STR12 "\033[34m(GradeDecrement function called) \033[0m\n"
 # endif
 
 // # ifndef STRD1
@@ -68,15 +67,15 @@
 // # endif
 
 #ifndef Strhigh
-# define Strhigh "\033[32m -> ⚔️ Grade is too high!\033[0m\n"
+# define Strhigh "\033[35m -> 💀 Grade is too high!\033[0m\n"
 #endif
 
 #ifndef Strlow
-# define Strlow "\033[32m -> ⚔️ Grade is too low!\033[0m\n"
+# define Strlow "\033[35m -> 💀 Grade is too low!\033[0m\n"
 #endif
 
 #ifndef STDAnS
-# define STDAnS "\033[32m -> 🤷‍♂️🐾 , bureaucrat grade \033[0m\n"
+# define STDAnS "\033[32m  , grade is: \033[0m"
 #endif
 
 
