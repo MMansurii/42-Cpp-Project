@@ -49,15 +49,15 @@ void showCaseForm(int i1)
 }
 
 // Default constructor with no Name and no Grade
-Form::Form(): Myname("No Name"), isMySigned(false), MySignGrade(150), MyExecGrade(150) {
+Form::Form(): Myname("No Name"), MySignGrade(150), MyExecGrade(150), isMySigned(false) {
     showCaseForm(0);
     showCaseForm(1);
 }
 
 
 // Default constructor with Name and Grades
-Form::Form(std::string Myname2, int MySignGrade2, int MyExecGrade2): Myname(Myname2), isMySigned(false
-), MySignGrade(MySignGrade2), MyExecGrade(MyExecGrade2) {
+Form::Form(std::string Myname2, int MySignGrade2, int MyExecGrade2): Myname(Myname2), MySignGrade(MySignGrade2), MyExecGrade(MyExecGrade2), isMySigned(false
+) {
     showCaseForm(0);
     showCaseForm(6);
     if (MySignGrade < 1 || MyExecGrade < 1)
@@ -100,7 +100,7 @@ Form::Form(std::string Myname2, int MySignGrade2, int MyExecGrade2): Myname(Myna
 // }
 
 // Copy constructor
-Form::Form(const Form &obj1) : Myname(obj1.Myname), isMySigned(obj1.isMySigned), MySignGrade(obj1.MySignGrade), MyExecGrade(obj1.MyExecGrade) {
+Form::Form(const Form &obj1) : Myname(obj1.Myname), MySignGrade(obj1.MySignGrade), MyExecGrade(obj1.MyExecGrade), isMySigned(obj1.isMySigned) {
     showCaseForm(0);
     showCaseForm(2);
 }
