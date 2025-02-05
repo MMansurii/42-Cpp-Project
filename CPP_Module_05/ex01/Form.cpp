@@ -159,9 +159,9 @@ int Form::getMyExecGrade(void) const {
 
 void Form::beSigned(const Bureaucrat &obj1) {
     if (obj1.getGrade() < 1 )
-        throw Form::GradeTooHighException();
+        throw Bureaucrat::GradeTooHighException();
     else if (obj1.getGrade() > 150)
-        throw Form::GradeTooLowException();
+        throw Bureaucrat::GradeTooLowException();
     if (obj1.getGrade() <= MySignGrade)
         isMySigned = true;
 }

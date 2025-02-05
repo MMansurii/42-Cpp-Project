@@ -1,127 +1,79 @@
 
 
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <string>
-#include <iostream>
+#include <fstream>
 
-# ifndef LineSizeAn
-#  define LineSizeAn 66
+# ifndef LineSize4
+#  define LineSize4 66
 # endif
-# ifndef STR1
-#  define STR1 "\033[32mDefault constructor called\033[0m\n"
+# ifndef STR41
+#  define STR41 "\033[32mDefault constructor called\033[0m\n"
 # endif
-# ifndef STR2
-#  define STR2 "\033[32mCopy constructor called\033[0m\n"
+# ifndef STR42
+#  define STR42 "\033[32mCopy constructor called\033[0m\n"
 # endif
-# ifndef STR3
-#  define STR3 "\033[32mDestructor called\033[0m\n"
+# ifndef STR43
+#  define STR43 "\033[32mDestructor called\033[0m\n"
 # endif
-# ifndef STR4
-#  define STR4 "\033[32mCopy assignment operator called\033[0m\n"
-# endif
-
-# ifndef STR6
-#  define STR6 "\033[32mConstructor with Name and Grade called\033[0m\n"
-# endif
-# ifndef STR7
-#  define STR7 "\033[32mConstructor with Grade called\033[0m\n"
-# endif
-# ifndef STR8
-#  define STR8 "\033[32mConstructor with Name called\033[0m\n"
+# ifndef STR44
+#  define STR44 "\033[32mCopy assignment operator called\033[0m\n"
 # endif
 
-# ifndef STR9
-#  define STR9 "\033[34m(getName function called) \033[0m"
-# endif
-# ifndef STR10
-#  define STR10 "\033[34m(getGrade function called) \033[0m"
-# endif
-# ifndef STR11
-#  define STR11 "\033[34m(GradeIncrement function called) \033[0m\n"
-# endif
-# ifndef STR12
-#  define STR12 "\033[34m(GradeDecrement function called) \033[0m\n"
+# ifndef STR46
+#  define STR46 "\033[32mConstructor with Name and Grades and target called\033[0m\n"
 # endif
 
-// # ifndef STRD1
-// #  define STRD1 " Is DEAD 💀\033[0m and can't play anymore.\n"
-// # endif
-// # ifndef STRD2
-// #  define STRD2 " just Died 💀\033[0m\n"
+// # ifndef STR49
+// #  define STR49 "\033[34m(getName function called) \033[0m"
 // # endif
 
 
-
-// # ifndef STDr1
-// #  define STDr1 "\033[34m -> ⚙️ Player is repairing: "
-// # endif
-
-// # ifndef STDd1
-// #  define STDd1 "\033[35m -> 💔 Player is taking damage: "
-// # endif
-
-// #ifndef STDa1
-// #  define STDa1 "\033[36m ⚔️ Player is attacking: "
-// # endif
-
-#ifndef Strhigh
-# define Strhigh "\033[35m -> 💀 Grade is too high!\033[0m\n"
+#ifndef STDAnS41
+# define STDAnS41 "\033[32mShrubberyCreationForm Name: \033[0m"
+#endif
+#ifndef STDAnS42
+# define STDAnS42 "\033[32m, Signed Grade is:  \033[0m"
+#endif
+#ifndef STDAnS43
+# define STDAnS43 "\033[32m, ExecGrade is : \033[0m"
+#endif
+#ifndef STDAnS44
+# define STDAnS44 "\033[32m, Target is : \033[0m"
 #endif
 
-#ifndef Strlow
-# define Strlow "\033[35m -> 💀 Grade is too low!\033[0m\n"
+#ifndef STD45
+# define STD45 "\033[32m couldn't be executed because it's not signed!\n"\033[0m"
+#endif
+#ifndef STD46
+# define STD46 "\033[32m couldn't execute  because his grade is too low!\033[0m\n"	
 #endif
 
-#ifndef STDAnS
-# define STDAnS "\033[32m  , grade is: \033[0m"
-#endif
-
-class Form;
 
 
-class Bureaucrat {
+class ShrubberyCreationForm: public AForm{
 	public:
 
-		void signForm(const Form &obj1);
-		class GradeTooHighException: public std::exception {
-			public:
-				const char* what() const throw();
-		};
-		class GradeTooLowException: public std::exception {
-			public:
-				const char* what() const throw();
-		};
-		//virtual void makeSound() const;
-		// std::string getType(void) const;
-		// void setType(std::string type2);
-		int getGrade(void) const;
-		const std::string getName(void) const;
-		
-		Bureaucrat(void);
-		~Bureaucrat(void);
-		Bureaucrat(std::string Myname, int Mygrade);
-		Bureaucrat(std::string Myname);
-		Bureaucrat(int Mygrade);
+		void execute(Bureaucrat const & executor) const;
 
-		Bureaucrat(const Bureaucrat &obj1);
-		Bureaucrat &operator=(const Bureaucrat &obj1);
+		std::string getMytarget(void) const;
+		
+		ShrubberyCreationForm(void);
+		~ShrubberyCreationForm(void);
+		ShrubberyCreationForm(std::string Mytarget);
 
-		
-		void GradeIncrement(void);
-		void GradeDecrement(void);
-		
+		ShrubberyCreationForm(const ShrubberyCreationForm &obj1);
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &obj1);		
 	private:
-		const std::string Myname;
-		int Mygrade;
+		std::string Mytarget;
 	
 	protected:
-		// std::string type;
 };
 
-std::ostream &operator<<(std::ostream &out1, Bureaucrat const &obj1);
+std::ostream &operator<<(std::ostream &out1, ShrubberyCreationForm const &obj1);
 
 #endif
 

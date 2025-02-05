@@ -1,182 +1,124 @@
 
 
 
-#include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
  
 // Print messages
-void showCaseBureaucrat(int i1) 
+void showCaseShrubberyCreationForm(int i1) 
 {
     if (i1 ==0)
     {
-        std::cout << std::string(LineSizeAn, '-')<< std::endl ;
-        std::cout << "\033[32m-> Bureaucrat Class: \033[0m";
+        std::cout << std::string(LineSize4, '-')<< std::endl ;
+        std::cout << "\033[32m-> ShrubberyCreationForm Class: \033[0m";
     }      
     if (i1==1)
-        std::cout << STR1;
+        std::cout << STR41;
     else if (i1==2)
-        std::cout << STR2;
+        std::cout << STR42;
     else if (i1==3)
-        std::cout << STR3;
+        std::cout << STR43;
     else if (i1==4)
-        std::cout << STR4;
+        std::cout << STR44;
     else if (i1==6)
-        std::cout << STR6;
-    else if (i1==7)
-        std::cout << STR7;
-    else if (i1==8)
-        std::cout << STR8;
-    else if (i1==9)
-        std::cout << STR9;
-    else if (i1==10)
-        std::cout << STR10;
-    else if (i1==11)
-        std::cout << STR11;
-    else if (i1==12)
-        std::cout << STR12;
-    // else if (i1==10) 
-    //     std::cout << STDr1;
-    // else if (i1==11)
-    //     std::cout << STDd1;
-    // else if (i1==12)
-    //     std::cout << STDa1;
-    // else if (i1==13)
-    //     std::cout << STRD1;
-    // else if (i1==14)
-    //     std::cout << STRD2;  
-    // else if (i1==11)
-    //     std::cout << STDAnS; 
+        std::cout << STR46;
     
 }
 
-void Bureaucrat::signForm(const Form &obj1) {
-    if (obj1.getIsMySigned() == true)
-        std::cout << "\n" << getName() << ",   Form " << obj1.getName() << " is already signed!" << std::endl;
-    else
-        std::cout << "\n" << getName() << " couldn't sign " << obj1.getName() << " because grade is too low!" << std::endl;
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+    if (getIsMySigned() == false)
+    {
+        std::cout << getName() << STD45 << std::endl;
+        return;
+    }
+    else if (getMyExecGrade () < executor.getGrade())
+    {
+        std::cout << executor.getName() << STD46 << std::endl;
+        throw Bureaucrat::GradeTooLowException();
     }
     
+        std::ofstream file1((getMytarget() + "_shrubbery").c_str());
+        if (!file1)
+        {
+            throw std::runtime_error("Error: Couldn't open the file.");
+        }
+        file1 << "        ####/O\\####   " << std::endl;
+        file1 << "     ####/O\\*\\####  " << std::endl;
+        file1 << "   ####/\\O\\*\\####  " << std::endl;
+        file1 << " ####/*O/\\/\\/\O\#### " << std::endl;
+        file1 << "   /\\O\\/\O\*\\/\O\  " << std::endl;
+        file1 << " /\\*\\/\\*\\/\\/\\ " << std::endl;
+        file1 << "/\\O\\/O\\/*/\\/O/\\" << std::endl;
+        file1 << "      |\|      " << std::endl;
+        file1 << "      |/|      " << std::endl;
+        file1 << " -----|\|--------  " << std::endl;
+        file1 << "-@@@//|/|\\\\@@@@-----------" << std::endl;
+        file1 << "@@@//@|\| \\\\@@@" << std::endl;
+        file1 << "@@//@@|/|@@\\\\@@" << std::endl;
+        file1 << "@//@@@|\|@@\\\\@" << std::endl;
+        file1 << "//@@@@|/|@@@@\\\\" << std::endl;
 
-// Default constructor with no Name and no Grade
-Bureaucrat::Bureaucrat(): Myname("No Name"), Mygrade(150) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(1);
 }
 
-// Default constructor with Name and Grade
-Bureaucrat::Bureaucrat(std::string Myname2, int Mygrade2): Myname(Myname2), Mygrade(Mygrade2) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(6);
-    if (Mygrade < 1)
-        throw Bureaucrat::GradeTooHighException();
-    else if (Mygrade > 150)
-        throw Bureaucrat::GradeTooLowException();
+    
+// Default constructor with no Name and no Grade and no target
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137), Mytarget("No Target") {
+    showCaseShrubberyCreationForm(0);
+    showCaseShrubberyCreationForm(1);
 }
 
-// Default constructor with Grade
-Bureaucrat::Bureaucrat(int Mygrade2): Myname("No Name"), Mygrade(Mygrade2) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(7);
-    if (Mygrade < 1)
-        throw Bureaucrat::GradeTooHighException();
-    else if (Mygrade > 150)
-        throw Bureaucrat::GradeTooLowException();
+// Default constructor with Name and Grades and target
+ShrubberyCreationForm::ShrubberyCreationForm(std::string Mytarget2): AForm("ShrubberyCreationForm", 145, 137), Mytarget(Mytarget2) {
+    showCaseShrubberyCreationForm(0);
+    showCaseShrubberyCreationForm(6);
 }
 
-// Default constructor with Name
-Bureaucrat::Bureaucrat(std::string Myname2): Myname(Myname2), Mygrade(150) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(8);
-}
-
-// // Default Constructor with type
-// Bureaucrat::Bureaucrat(std::string type2) {
-//     showCaseBureaucrat(0);
-//     showCaseBureaucrat(1);
-//     type = type2;
-// }
 
 // Copy constructor
-Bureaucrat::Bureaucrat(const Bureaucrat &obj1) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(2);
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj1): AForm(obj1), Mytarget(obj1.Mytarget) {
+    showCaseShrubberyCreationForm(0);
+    showCaseShrubberyCreationForm(2);
     *this = obj1;
 }
 
-// Copy constructor (shorter version)
-// Bureaucrat::Bureaucrat(const Bureaucrat &obj1) {
-//     showCaseBureaucrat(2);
-//     *this = obj1;
-// }
 
-Bureaucrat::~Bureaucrat() {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(3);
+ShrubberyCreationForm::~ShrubberyCreationForm() {
+    showCaseShrubberyCreationForm(0);
+    showCaseShrubberyCreationForm(3);
 }
 
 // Copy assignment operator
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj1) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(4);
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj1) {
+    showCaseShrubberyCreationForm(0);
+    showCaseShrubberyCreationForm(4);
     if (this != &obj1)
     {
-        Mygrade = obj1.Mygrade;
+        Mytarget = obj1.Mytarget;
     }
     return *this;
 }
 
 // Setters and Getters
 
-// void Bureaucrat::setType(std::string type2) {
-//     type = type2;
-// }
 
-const std::string Bureaucrat::getName(void) const {
-    //showCaseBureaucrat(0);
-    showCaseBureaucrat(9);
-    return Myname;
+std::string ShrubberyCreationForm::getMytarget(void) const {
+    //showCaseShrubberyCreationForm(0);
+    //showCaseShrubberyCreationForm(9);
+    return Mytarget;
 }
-
-int Bureaucrat::getGrade(void) const {
-    //showCaseBureaucrat(0);
-    showCaseBureaucrat(10);
-    return Mygrade;
-}
-
 
 // 
 
-void Bureaucrat::GradeIncrement(void) {
-    //showCaseBureaucrat(0);
-    showCaseBureaucrat(11);
-    if (Mygrade - 1 < 1)
-        throw Bureaucrat::GradeTooHighException();
-    else
-        Mygrade--;
-}
 
-void Bureaucrat::GradeDecrement(void) {
-    //showCaseBureaucrat(0);
-    showCaseBureaucrat(12);
-    if (Mygrade + 1 > 150)
-        throw Bureaucrat::GradeTooLowException();
-    else
-        Mygrade++;
-}
-
-std::ostream &operator<<(std::ostream &out1, const Bureaucrat &obj1) {
-    out1 << obj1.getName(); //<< ", bureaucrat grade " << obj1.getGrade() << std::endl;
-    out1 << STDAnS;
-    out1 << obj1.getGrade() << std::endl;
+std::ostream &operator<<(std::ostream &out1, const ShrubberyCreationForm &obj1) {
+    out1 << STDAnS41;
+    out1 << obj1.getName(); 
+    out1 << STDAnS42;
+    out1 << obj1.getMySignGrade() ;
+    out1 << STDAnS43;
+    out1 << obj1.getMyExecGrade();
+    out1 << STDAnS44;
+    out1 << obj1.getMytarget();
+    out1 << ".  " << std::endl;
     return out1;
-}
-
-// Exceptions
-
-const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return Strhigh;
-}
-
-const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return Strlow;
 }
 

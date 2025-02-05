@@ -48,7 +48,7 @@ void showCaseBureaucrat(int i1)
     
 }
 
-void Bureaucrat::signForm(const Form &obj1) {
+void Bureaucrat::signForm(const AForm &obj1) {
     if (obj1.getIsMySigned() == true)
         std::cout << "\n" << getName() << ",   Form " << obj1.getName() << " is already signed!" << std::endl;
     else

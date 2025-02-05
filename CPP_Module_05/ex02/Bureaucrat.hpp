@@ -3,7 +3,7 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <string>
 #include <iostream>
 
@@ -79,13 +79,15 @@
 # define STDAnS "\033[32m  , grade is: \033[0m"
 #endif
 
-class Form;
+class AForm;
 
 
 class Bureaucrat {
 	public:
 
-		void signForm(const Form &obj1);
+		void signForm(const AForm &obj1);
+		void executeForm(const AForm &obj1) const;
+		
 		class GradeTooHighException: public std::exception {
 			public:
 				const char* what() const throw();
