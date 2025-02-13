@@ -1,15 +1,15 @@
 
 
 
-#include "Bureaucrat.hpp"
+#include "Serializer.hpp"
  
 // Print messages
-void showCaseBureaucrat(int i1) 
+void showCaseSerializer(int i1) 
 {
     if (i1 ==0)
     {
         std::cout << std::string(LineSizeAn, '-')<< std::endl ;
-        std::cout << "\033[32m-> Bureaucrat Class: \033[0m";
+        std::cout << "\033[32m-> Serializer Class: \033[0m";
     }      
     if (i1==1)
         std::cout << STR1;
@@ -49,66 +49,66 @@ void showCaseBureaucrat(int i1)
 }
 
 // Default constructor with no Name and no Grade
-Bureaucrat::Bureaucrat(): Myname("No Name"), Mygrade(150) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(1);
+Serializer::Serializer(): Myname("No Name"), Mygrade(150) {
+    showCaseSerializer(0);
+    showCaseSerializer(1);
 }
 
 // Default constructor with Name and Grade
-Bureaucrat::Bureaucrat(std::string Myname2, int Mygrade2): Myname(Myname2), Mygrade(Mygrade2) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(6);
+Serializer::Serializer(std::string Myname2, int Mygrade2): Myname(Myname2), Mygrade(Mygrade2) {
+    showCaseSerializer(0);
+    showCaseSerializer(6);
     if (Mygrade < 1)
-        throw Bureaucrat::GradeTooHighException();
+        throw Serializer::GradeTooHighException();
     else if (Mygrade > 150)
-        throw Bureaucrat::GradeTooLowException();
+        throw Serializer::GradeTooLowException();
 }
 
 // Default constructor with Grade
-Bureaucrat::Bureaucrat(int Mygrade2): Myname("No Name"), Mygrade(Mygrade2) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(7);
+Serializer::Serializer(int Mygrade2): Myname("No Name"), Mygrade(Mygrade2) {
+    showCaseSerializer(0);
+    showCaseSerializer(7);
     if (Mygrade < 1)
-        throw Bureaucrat::GradeTooHighException();
+        throw Serializer::GradeTooHighException();
     else if (Mygrade > 150)
-        throw Bureaucrat::GradeTooLowException();
+        throw Serializer::GradeTooLowException();
 }
 
 // Default constructor with Name
-Bureaucrat::Bureaucrat(std::string Myname2): Myname(Myname2), Mygrade(150) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(8);
+Serializer::Serializer(std::string Myname2): Myname(Myname2), Mygrade(150) {
+    showCaseSerializer(0);
+    showCaseSerializer(8);
 }
 
 // // Default Constructor with type
-// Bureaucrat::Bureaucrat(std::string type2) {
-//     showCaseBureaucrat(0);
-//     showCaseBureaucrat(1);
+// Serializer::Serializer(std::string type2) {
+//     showCaseSerializer(0);
+//     showCaseSerializer(1);
 //     type = type2;
 // }
 
 // Copy constructor
-Bureaucrat::Bureaucrat(const Bureaucrat &obj1) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(2);
+Serializer::Serializer(const Serializer &obj1) {
+    showCaseSerializer(0);
+    showCaseSerializer(2);
     *this = obj1;
 }
 
 // Copy constructor (shorter version)
-// Bureaucrat::Bureaucrat(const Bureaucrat &obj1) {
-//     showCaseBureaucrat(2);
+// Serializer::Serializer(const Serializer &obj1) {
+//     showCaseSerializer(2);
 //     *this = obj1;
 // }
 
-Bureaucrat::~Bureaucrat() {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(3);
+Serializer::~Serializer() {
+    showCaseSerializer(0);
+    showCaseSerializer(3);
 }
 
 // Copy assignment operator
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj1) {
-    showCaseBureaucrat(0);
-    showCaseBureaucrat(4);
+Serializer &Serializer::operator=(const Serializer &obj1) {
+    showCaseSerializer(0);
+    showCaseSerializer(4);
     if (this != &obj1)
     {
         Mygrade = obj1.Mygrade;
@@ -118,45 +118,45 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj1) {
 
 // Setters and Getters
 
-// void Bureaucrat::setType(std::string type2) {
+// void Serializer::setType(std::string type2) {
 //     type = type2;
 // }
 
-const std::string Bureaucrat::getName(void) const {
-    //showCaseBureaucrat(0);
-    showCaseBureaucrat(9);
+const std::string Serializer::getName(void) const {
+    //showCaseSerializer(0);
+    showCaseSerializer(9);
     return Myname;
 }
 
-int Bureaucrat::getGrade(void) const {
-    //showCaseBureaucrat(0);
-    showCaseBureaucrat(10);
+int Serializer::getGrade(void) const {
+    //showCaseSerializer(0);
+    showCaseSerializer(10);
     return Mygrade;
 }
 
 
 // 
 
-void Bureaucrat::GradeIncrement(void) {
-    //showCaseBureaucrat(0);
-    showCaseBureaucrat(11);
+void Serializer::GradeIncrement(void) {
+    //showCaseSerializer(0);
+    showCaseSerializer(11);
     if (Mygrade - 1 < 1)
-        throw Bureaucrat::GradeTooHighException();
+        throw Serializer::GradeTooHighException();
     else
         Mygrade--;
 }
 
-void Bureaucrat::GradeDecrement(void) {
-    //showCaseBureaucrat(0);
-    showCaseBureaucrat(12);
+void Serializer::GradeDecrement(void) {
+    //showCaseSerializer(0);
+    showCaseSerializer(12);
     if (Mygrade + 1 > 150)
-        throw Bureaucrat::GradeTooLowException();
+        throw Serializer::GradeTooLowException();
     else
         Mygrade++;
 }
 
-std::ostream &operator<<(std::ostream &out1, const Bureaucrat &obj1) {
-    out1 << obj1.getName(); //<< ", bureaucrat grade " << obj1.getGrade() << std::endl;
+std::ostream &operator<<(std::ostream &out1, const Serializer &obj1) {
+    out1 << obj1.getName(); //<< ", Serializer grade " << obj1.getGrade() << std::endl;
     out1 << STDAnS;
     out1 << obj1.getGrade() << std::endl;
     return out1;
@@ -164,11 +164,11 @@ std::ostream &operator<<(std::ostream &out1, const Bureaucrat &obj1) {
 
 // Exceptions
 
-const char* Bureaucrat::GradeTooHighException::what() const throw() {
+const char* Serializer::GradeTooHighException::what() const throw() {
     return Strhigh;
 }
 
-const char* Bureaucrat::GradeTooLowException::what() const throw() {
+const char* Serializer::GradeTooLowException::what() const throw() {
     return Strlow;
 }
 
