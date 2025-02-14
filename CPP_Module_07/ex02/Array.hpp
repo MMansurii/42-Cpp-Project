@@ -50,7 +50,7 @@
 // #  define STDa1 "\033[36m ⚔️ Player is attacking: "
 // # endif
 
-
+// Develop a class template Array that contains elements of type T. 
 template <typename T1>
 class Array {
 
@@ -105,6 +105,7 @@ void showCaseArray(int i1)
 
 
 // Default constructor
+// • Construction with no parameter: Creates an empty array.
 template <typename T1>
 Array<T1>::Array(): MyarraySize(0), Myarray(NULL) {
 	showCaseArray(0);
@@ -112,18 +113,24 @@ Array<T1>::Array(): MyarraySize(0), Myarray(NULL) {
 }
 
 // Default constructor with array and size
+// • Construction with an unsigned int n as a parameter.
 template <typename T2>
 Array<T2>::Array(unsigned int MyarraySize2): MyarraySize(MyarraySize2), Myarray(new T2[MyarraySize2]) {
 	showCaseArray(0);
 	showCaseArray(6);
 }
 
+// • Construction by copy and assignment operator. In both cases, modifying either the
+//    original array or its copy after copying musn’t affect the other array.
 // Copy constructor
 template <typename T3>
 Array<T3>::Array(const Array &obj1) : MyarraySize(obj1.MyarraySize)
 {
 	showCaseArray(0);
 	showCaseArray(2);
+	// • You MUST use the operator new[] to allocate memory.
+	//   Preventive allocation (allocating memory in advance) is forbidden.
+	//   Your program must never access nonallocated memory.
 	Myarray = new T3[MyarraySize];
 	// for (unsigned int i = 0; i < MyarraySize; i++)
 	// 	Myarray[i] = obj1.Myarray[i];
@@ -159,12 +166,17 @@ Array<T5> &Array<T5>::operator=(const Array &obj1) {
 
 // Setters and Getters
 
+// • A member function size() that returns the number of elements in the array. This
+//   member function takes no parameter and musn’t modify the current instance.
 // size function
 template <typename T6>
 unsigned int Array<T6>::size(void) const {
 	return MyarraySize;
 }
 
+// • Elements can be accessed through the subscript operator: [ ].
+// • When accessing an element with the [ ] operator, 
+//   if its index is out of bounds, an std::exception is thrown.
 // operator[] function
 template <typename T7>
 T7 &Array<T7>::operator[](unsigned int index1) const {
