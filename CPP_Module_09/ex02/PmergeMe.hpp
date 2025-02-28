@@ -3,9 +3,26 @@
 #ifndef PmergeMe_HPP
 #define PmergeMe_HPP
 
-#include "Form.hpp"
+
 #include <string>
 #include <iostream>
+#include <algorithm>
+#include <sstream>
+#include <chrono>
+#include <cstdlib>
+#include <cctype>
+#include <iostream>
+#include <vector>
+#include <deque>
+#include <list>
+#include <set>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <stdexcept>
+#include <iterator>
+#include <fstream>
+#include <map>
 
 # ifndef LineSizeAn
 #  define LineSizeAn 66
@@ -23,105 +40,45 @@
 #  define STR4 "\033[32mCopy assignment operator called\033[0m\n"
 # endif
 
-# ifndef STR6
-#  define STR6 "\033[32mConstructor with Name and Grade called\033[0m\n"
-# endif
-# ifndef STR7
-#  define STR7 "\033[32mConstructor with Grade called\033[0m\n"
-# endif
-# ifndef STR8
-#  define STR8 "\033[32mConstructor with Name called\033[0m\n"
-# endif
-
-# ifndef STR9
-#  define STR9 "\033[34m(getName function called) \033[0m"
-# endif
-# ifndef STR10
-#  define STR10 "\033[34m(getGrade function called) \033[0m"
-# endif
-# ifndef STR11
-#  define STR11 "\033[34m(GradeIncrement function called) \033[0m\n"
-# endif
-# ifndef STR12
-#  define STR12 "\033[34m(GradeDecrement function called) \033[0m\n"
-# endif
-
-// # ifndef STRD1
-// #  define STRD1 " Is DEAD 💀\033[0m and can't play anymore.\n"
-// # endif
-// # ifndef STRD2
-// #  define STRD2 " just Died 💀\033[0m\n"
-// # endif
-
-
-
-// # ifndef STDr1
-// #  define STDr1 "\033[34m -> ⚙️ Player is repairing: "
-// # endif
-
-// # ifndef STDd1
-// #  define STDd1 "\033[35m -> 💔 Player is taking damage: "
-// # endif
-
-// #ifndef STDa1
-// #  define STDa1 "\033[36m ⚔️ Player is attacking: "
-// # endif
-
-#ifndef Strhigh
-# define Strhigh "\033[35m -> 💀 Grade is too high!\033[0m\n"
-#endif
-
-#ifndef Strlow
-# define Strlow "\033[35m -> 💀 Grade is too low!\033[0m\n"
-#endif
-
-#ifndef STDAnS
-# define STDAnS "\033[32m  , grade is: \033[0m"
-#endif
-
-class Form;
 
 
 class PmergeMe {
 	public:
-
-		void signForm(const Form &obj1);
-		class GradeTooHighException: public std::exception {
-			public:
-				const char* what() const throw();
-		};
-		class GradeTooLowException: public std::exception {
-			public:
-				const char* what() const throw();
-		};
-		//virtual void makeSound() const;
-		// std::string getType(void) const;
-		// void setType(std::string type2);
-		int getGrade(void) const;
-		const std::string getName(void) const;
 		
 		PmergeMe(void);
 		~PmergeMe(void);
-		PmergeMe(std::string Myname, int Mygrade);
-		PmergeMe(std::string Myname);
-		PmergeMe(int Mygrade);
 
 		PmergeMe(const PmergeMe &obj1);
 		PmergeMe &operator=(const PmergeMe &obj1);
 
+		int check_args(int argc, char** argv);
+		int check_positive_int(const std::string &str1);
+		int read_args_vector(int argc, char** argv, std::vector<int>& MyVector1);
+		int read_args_deque(int argc, char** argv, std::deque<int>& MyDeque1);
+		void show_origin_vec(std::vector<int>& Myyvector1);
+		void sortVector(std::vector<int>& Myvec1);
+		void ft_insertVect(std::vector<int>& sorted, int value);
+		void algofordJohnsonVect(std::vector<int>& v);
+		void sortDeque(std::deque<int>& Mydeq1);
+		void insertDeque(std::deque<int>& sorted, int value);
+		void algofordJohnsonDeq(std::deque<int>& d);
+		std::chrono::duration<double, std::micro> do_sort4vec(std::vector<int> &MyVector1 , PmergeMe &MySort1);
+		std::chrono::duration<double, std::micro> do_sort4deq(std::deque<int> &MyDeque1 , PmergeMe &MySort1);
+		void show_sorted_vec(std::vector<int>& Myyvector1);
+		static void show_comparison(std::size_t MyvectorSize, const std::chrono::duration<double, std::micro> &vectime,
+			std::size_t MydequeSize, const std::chrono::duration<double, std::micro> &deqtime);
+		int run_with_class(int argc, char** argv);
+
 		
-		void GradeIncrement(void);
-		void GradeDecrement(void);
 		
 	private:
-		const std::string Myname;
-		int Mygrade;
+		// std::de
 	
 	protected:
 		// std::string type;
 };
 
-std::ostream &operator<<(std::ostream &out1, PmergeMe const &obj1);
+// std::ostream &operator<<(std::ostream &out1, PmergeMe const &obj1);
 
 #endif
 

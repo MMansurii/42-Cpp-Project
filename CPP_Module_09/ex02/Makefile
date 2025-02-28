@@ -1,8 +1,8 @@
 
 
-NAME 				= a
-SRCS 				= main.cpp Bureaucrat.cpp Form.cpp
-CFLAGS	 			= -Wall -Werror -Wextra -std=c++98
+NAME 				= PmergeMe
+SRCS 				= main.cpp PmergeMe.cpp
+CFLAGS	 			= -Wall -Werror -Wextra -std=c++11
 OBJS        		= $(SRCS:%.cpp=%.o)
 CC = c++
 
