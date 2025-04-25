@@ -1,25 +1,18 @@
-
-
-NAME 				= a
-SRCS 				= main.cpp Serializer.cpp
-CFLAGS	 			= -Wall -Werror -Wextra -std=c++98
-OBJS        		= $(SRCS:%.cpp=%.o)
+NAME = ex01
+RM = rm -f
 CC = c++
+FLAGS = -Wall -Wextra -Werror -std=c++98
+
+SRCS = main.cpp Serializer.cpp Data.cpp
 
 all: $(NAME)
 
-
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
-
-
+$(NAME): $(SRCS)
+	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 clean:
-	rm -rf $(OBJS)
-	
+	$(RM) $(OBJS)
 fclean: clean
-	rm -rf $(NAME)
-
-
+	$(RM) $(NAME)
 re: fclean all
 
 .PHONY: all clean fclean re

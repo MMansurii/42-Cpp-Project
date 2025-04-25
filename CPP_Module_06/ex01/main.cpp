@@ -10,22 +10,19 @@
 // reinterpret_cast → A low-level type conversion that allows casting between unrelated types,
 //        such as pointers to integers or different pointer types. It is unsafe and should be used with caution.
 
-#include "Serializer.hpp"
+# include "Serializer.hpp"
 
 int main()
 {
-    Data first;
-    first.MyName1 = "Michael Novokovich";
-    first.MyGrade1 = 17;
-    first.IsGraduated = false;
-    first.next = NULL; //-std=c++98
-    // first.next = nullptr; //-std=c++11
-
-    uintptr_t raw = Serializer::serialize(&first);
-    Data *second = Serializer::deserialize(raw);
-
-    std::cout << "First:  " << first.MyName1 << " " << first.MyGrade1 << " " << first.IsGraduated << std::endl;
-    std::cout << "Second: " << second->MyName1 << " " << second->MyGrade1 << " " << second->IsGraduated << std::endl;
-    return 0;
-}
+    Data data(27, 1.78, "Mohamad");
     
+    uintptr_t serialized = Serializer::serialize(&data);
+    Data *deserialized = Serializer::deserialize(serialized);
+    
+    if (deserialized == &data)
+        std::cout << "Deserialization successful. Pointers are equal." << std::endl;
+    else
+        std::cout << "Deserialization failed. Pointers are not equal." << std::endl;
+    deserialized->printData();
+    return (0);
+}
